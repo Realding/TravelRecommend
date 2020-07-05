@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}推荐列表{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 70px">
+    <h2 class="text-success">推荐城市表</h2>
+        <table class="table table-striped">
+        {% for city in cities %}
+            <tr><td><a href="/{{ city }}/">{{ city }}</a></td></tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

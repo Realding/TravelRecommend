@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+	<script language="javascript">
+        function exec1(command) {
+            var ws = new ActiveXObject("WScript.Shell");
+            ws.run(command);
+        }
+ 
+        function input() {
+            text = document.getElementById("data").value;  //获得网页文本框的值
+            var strFile = "F:\\Python\\UserCF\\web\\input.txt";	//定义文件保存的路径
+            var objFSO = new ActiveXObject("Scripting.FileSystemObject");
+            var objStream = objFSO.CreateTextFile(strFile, true);
+            objStream.Write(text);  //写值
+            objStream.Close();
+        }
+    </script>
+    
+<title>login</title>
+
+</head>
+
+<body>
+	<div id="username">
+        <div><h1>用户名：</h1></div>
+        <div><input id="uname"></div>
+    </div>
+    <p></p>
+    <!-- 点击运行Python按钮，将本地执行test4.py程序 -->
+    <div id="program">
+        <input type="button" value="提交" onclick="exec1('pythonw F:\\Python3\\TravelRecomand\\UserCF\\UserCF.py')">
+    </div>
+ 
+    <!-- 点击查看, 将在框内显示出推荐景点-->
+    <div id="result">	
+        <p><a href="result.txt" target="result">查看</a></p>
+        <iframe name="result" width="300" height="300" scrolling="no" frameborder="3"></iframe>	
+    </div>
+ 
+    <p></p>
+</body>
+
+</html>

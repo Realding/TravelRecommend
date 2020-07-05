@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}欢迎光临首页{% endblock %}
+
+{% block content %}
+
+    <script language="JavaScript">
+        function change_user() {
+
+            var uid = document.getElementById("textId").value;
+            alert("欢迎用户"+uid);
+            window.location.href=("/"+uid+"/");
+        }
+    </script>
+
+
+    <div class="container">
+
+    {% include 'carousel.html' %}
+
+		<div id="banner" style="margin:0 auto;width:97%;margin-top: 40px;margin-bottom: 10px;height:150px;background-color:#4188D2;background-size: cover;">
+		<header class="text-center" style="padding-top:30px ;color: #FCFCFC">
+			<h1>爱旅行</h1>
+			<p>爱上生活，爱上旅行</p>
+		</header>
+	</div>
+
+	<div class="container" style="margin-top: 10px">
+		<div class="row">
+			<div class="col-3">
+				<div class="card" style="">
+				    <img class="card-img-top" src="{% static "image/user.jpg" %}" style="width:100%">
+				    <div class="card-body" style="text-align: center">
+				        <h4 class="card-title">用户id:{{ user_id }}</h4>
+                        <a href="recommend/" class="btn btn-primary">城市推荐</a>
+                        <a href="/login/" class="btn btn-primary">切换用户</a>
+				    </div>
+				  </div>
+			</div>
+
+			<div class="col-6">
+					<div class="card" style="">
+					    <div class="card-body">
+				        <h3 class="card-title">我的足迹</h3>
+                            {% for route in routes %}
+                                <a href="/{{ route }}/"><h4>{{ route }}</h4></a>
+                            {% endfor %}
+				      <p class="card-text"></p>
+				    </div>
+				  </div>
+			</div>
+
+		<div class="col">
+			<nav class="navbar navbar-dark" style="background-color: #4188D2	">
+
+			  <ul class="navbar-nav">
+                  <a class="navbar-brand" href="/">热门城市</a>
+			    <li class="nav-item active">
+			      <a class="nav-link" href="/北京/">北京<span class="badge badge-warning" style="margin-left: 10px">hot</span></a>
+
+			      <a class="nav-link" href="/成都/">成都<span class="badge badge-warning" style="margin-left: 10px">hot</span></a>
+
+			      <a class="nav-link" href="/厦门/">厦门<span class="badge badge-warning" style="margin-left: 10px">hot</span></a>
+
+			      <a class="nav-link" href="/上海/">上海<span class="badge badge-warning" style="margin-left: 10px">hot</span></a>
+
+			      <a class="nav-link" href="/丽江/">丽江</a>
+
+			      <a class="nav-link" href="/杭州/">杭州</a>
+
+			      <a class="nav-link" href="/拉萨/">拉萨</a>
+
+			      <a class="nav-link" href="/大理/">大理</a>
+
+			      <a class="nav-link" href="/广州/">广州</a>
+
+			      <a class="nav-link" href="/澳门/">澳门</a>
+			    </li>
+			  </ul>
+			</nav>
+		</div>
+	</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}
